@@ -1,0 +1,71 @@
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1024px;
+    height: 100vh;
+    margin-right: auto;
+    margin-left: auto;
+   // background-color: purple;
+
+}
+
+.formContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 100px 50px 100px;
+
+    #form {
+        display: flex;
+        flex-direction: column;
+        background-color: whitesmoke;
+        width: 320px;
+        padding: 80px;
+    }
+
+    input {
+        margin: 10px 0px 10px 0px;
+        padding: 15px;
+        border: 1px solid rgba(0, 0, 0, 0.133);
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    #addTask {
+        padding: 15px;
+        background-color: rgb(68, 189, 229);
+        color: whitesmoke;
+        font-size: medium;
+        border: none;
+    }
+
+    #addTask:hover {
+        background-color: rgb(58, 152, 183);
+        transition: 0.7s;
+    }
+
+    #addTask:active {
+        background-color: rgb(114, 213, 246);
+    }
+}
+
+.tasksContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 560px;
+    margin-bottom: 50px;
+    padding: 50px;
+    //background-color: rgb(219, 22, 22);
+    .title {
+        color: rgb(255, 255, 255);
+        font-weight: bolder;
+    }
+
+    .tasks {
+        color: rgb(255, 255, 255);
+    }
+}
