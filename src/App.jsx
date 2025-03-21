@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useEffect } from "react";
 import "./App.scss";
 
 const TaskForm = () => {
@@ -23,8 +24,10 @@ const TaskForm = () => {
             });
 
             if (response.ok) {
-                console.log("sucessful submit");
+                console.log("sucessfully submit", response);
             }
+            setFormData({task: ""}) /// reset for input field state
+            //write function reload react app
         } catch (error) {
             console.log("Something went wrong", error);
         }
@@ -52,15 +55,43 @@ const TaskForm = () => {
         </>
     );
 };
-
+//working on this componet
 const Tasks = () => {
+
+    const [tasks, setTasks] = useState([])
+
+    useEffect( ()=>{
+        try {
+            fetch("http://localhost:4000/get-tasks") // Fetch data from Express server with the rout /get-data
+        .then((response) => {
+            return response.json()
+        })
+        .then((tasks)=>{
+            setTasks(tasks)
+        })
+        console.log(tasks)
+        } catch (error) {
+            console.error("error fetching tasks:", error)
+            
+        }
+
+        
+    }, [])
+    
     return (
         <>
             <div className="tasksContainer">
                 <div className="title">Task List </div>
                 <div className="tasks">
-                    <p>task 1 to complete</p>
-                    <p>task 2 to complete</p>
+                     {tasks.map((taskObject) =>{
+                        return(
+                            <div key={taskObject._id}>
+                                {taskObject.task}
+                            </div>
+                        )
+
+                     })}
+                       
                 </div>
             </div>
         </>
