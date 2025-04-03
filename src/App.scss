@@ -65,7 +65,16 @@
         font-weight: bolder;
     }
 
-    .tasks {
-        color: rgb(255, 255, 255);
+    .taskItemContainer {
+        //put shodw styles here
+        color: rgb(22, 20, 20);
+    }
+    .taskItem {
+        display: flex;
+        justify-content: space-evenly;
+        background-color: whitesmoke;
+        padding: 2em 8em 2em 8em;
+        border-radius: 50px;
+        margin-bottom: 10px;
     }
 }
