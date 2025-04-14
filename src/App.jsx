@@ -90,29 +90,32 @@ const Tasks = () => {
 
     // // Fetch Express server route and perform the action in that rout /update-task
     const handleUpdateTask = async ()=>{
+        if (!window.confirm("Are you sure you want to delete this item?")) return;
         console.log("the update task button was clicked")
-        await fetch("http://localhost:4000/update-task")
-        .then(console.log("A task was updated"))
-        .then(setTimeout(() => {
-            window.location.reload()
-        }, 500))
-        .catch((err)=>{
-            console.log(err)
+        await fetch("http://localhost:4000/update-task",{
+            method: "PATCH"
         })
     }
     // // Fetch Express server route and perform the action in that rout /delete-task
-    const handleDeleteTask = async ()=>{
+    const handleDeleteTask = async (id)=>{
         console.log("the delete task button was clicked")
-        await fetch("http://localhost:4000/delete-task")
-        .then(console.log("A task was deleted"))
-        .then(
-            setTimeOut(()=>{
+
+        try {
+            const response = await fetch(`http://localhost:4000/delete-task/${id}`,{
+                method: 'DELETE',
+            })
+            if (response.ok) {
+                console.log("an item was deleted")
+            }
+
+            setTimeout(() => {
                 window.location.reload()
-            }, 500)
-        )
-        .catch((err)=>{
-            console.log(err)
-        })
+            }, 500);
+            
+        } catch (error) {
+            console.error("Error deleting resource:", error); 
+        }
+        
     }
     //----------------------------------------------------------->
 
@@ -126,7 +129,7 @@ const Tasks = () => {
                             <div key={taskObject._id} className="taskItem" >
                                 <div>{taskObject.task}</div>
                                 <div onClick={handleUpdateTask}><AiOutlineEdit /></div>
-                                <div onClick={handleDeleteTask}><AiOutlineDelete /></div>
+                                <div onClick={()=>handleDeleteTask(taskObject._id)}><AiOutlineDelete /></div>
                             </div>
                         )
 
