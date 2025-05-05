@@ -74,11 +74,17 @@
     }
     .taskItem {
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-between;
         background-color: whitesmoke;
-        padding: 2em 8em 2em 8em;
+        width: 500px;
+        padding: 2em;
         border-radius: 5px;
         margin-bottom: 15px;
         box-shadow: #35353563 0px 2px 8px 0px;
+        .taskItemButtons{
+            display: flex;
+            justify-content: space-evenly;
+            width: 100px;
+        }
     }
 }
