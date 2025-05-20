@@ -11,7 +11,8 @@ const Tasks = () => {
   useEffect(() => {
     const fetchTask = async () => {
       try {
-        await fetch("http://localhost:4000/get-tasks") // Fetch data from Express server with the rout /get-data
+        // await fetch("http://localhost:4000/get-tasks") // Fetch data from Express server with the rout /get-data
+        await fetch("https://memorynotes.netlify.app/get-tasks")
           .then((response) => {
             return response.json();
           })
