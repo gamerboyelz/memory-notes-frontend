@@ -14,7 +14,7 @@ const TaskForm = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch("http://localhost:4000/submit-form", {
+            const response = await fetch("https://memory-notes-backend.onrender.com/submit-form", {
                 method: "POST",
                 headers: {
                     "content-Type": "application/json",

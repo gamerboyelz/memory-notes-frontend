@@ -39,7 +39,7 @@ const Tasks = () => {
     //step 3: update form fields with infromation to edit
 
     
-    await fetch("http://localhost:4000/update-task", {
+    await fetch("https://memory-notes-backend.onrender.com/update-task", {
       method: "PATCH",
     });
   };
@@ -50,7 +50,7 @@ const Tasks = () => {
     console.log("the update task button was clicked");
 
     try {
-      const response = await fetch(`http://localhost:4000/delete-task/${id}`, {
+      const response = await fetch(`https://memory-notes-backend.onrender.com/delete-task/${id}`, {
         method: "DELETE",
       });
       if (response.ok) {
